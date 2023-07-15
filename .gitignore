@@ -1,2 +1,4 @@
-.n8n
-letsencrypt
+.n8n/*
+!.n8n/.gitkeep
+letsencrypt/*
+!letsencrypt/.gitkeep
