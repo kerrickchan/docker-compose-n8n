@@ -1,28 +1,6 @@
 version: "3"
 
 services:
-  traefik:
-    image: "traefik:v2.10.1"
-    restart: always
-    command:
-      - "--api=true"
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
-      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.mytlschallenge.acme.tlschallenge=true"
-      - "--certificatesresolvers.mytlschallenge.acme.email=${SSL_EMAIL}"
-      - "--certificatesresolvers.mytlschallenge.acme.storage=/letsencrypt/acme.json"
-    ports:
-      - "11080:80"
-      - "11443:443"
-    volumes:
-      - ${DATA_FOLDER}/letsencrypt:/letsencrypt
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-
   n8n:
     image: docker.n8n.io/n8nio/n8n:0.236.1
     restart: always
