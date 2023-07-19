@@ -30,6 +30,8 @@ services:
       # - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
       - WEBHOOK_URL=https://${DOMAIN_NAME}/
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - NODE_FUNCTION_ALLOW_BUILTIN=*
+      - NODE_FUNCTION_ALLOW_EXTERNAL=*
     volumes:
       - ${DATA_FOLDER}/.n8n:/home/node/.n8n
       - ./files:/files
